@@ -1,7 +1,12 @@
 LANDING=$(pwd)
 ERROR_LOG="${LANDING}/error.log"
+PASSWORD="Catch22@"
+DEBIAN_FRONTEND="noninteractive"
 
 touch $ERROR_LOG
+export DEBIAN_FRONTEND="noninteractive"
+debconf-set-selections <<< "mariadb-server mysql-server/root_password password $PASSWORD"
+debconf-set-selections <<< "mariadb-server mysql-server/root_password_again password $PASSWORD"
 apt install -y openssh-server
 apt install -y gawk socat
 apt install -y libaio1 libcgi-fast-perl libcgi-pm-perl libdbd-mysql-perl libdbi-perl libencode-locale-perl libfcgi-perl libhtml-parser-perl;
