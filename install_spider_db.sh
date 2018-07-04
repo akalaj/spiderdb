@@ -1,12 +1,7 @@
-#!/bin/bash
-
-#Variables
-
-#Where ever we land
 LANDING=$(pwd)
-ERROR_LOG="${LANDING}/error.log"
+ERROR_LOG="${LANDING}error.log"
 
-#MAIN
+touch $ERROR_LOG
 apt install -y openssh-server
 apt install -y gawk socat
 apt install -y libaio1 libcgi-fast-perl libcgi-pm-perl libdbd-mysql-perl libdbi-perl libencode-locale-perl libfcgi-perl libhtml-parser-perl;
@@ -24,11 +19,11 @@ apt upgrade -y
 mkdir /opt/debs/maria
 mv ${LANDING}/*.debs /opt/deb/maria/
 cd /opt/debs/maria
-dpkg -i mysql-common_10.3.8+maria~xenial_all.deb 2>${LANDING}/${ERROR_LOG}
-dpkg -i mariadb-common_10.3.8+maria~xenial_all.deb 2>${LANDING}/${ERROR_LOG}
-dpkg -i mariadb-client-core-10.3_10.3.8+maria~xenial_amd64.deb 2>${LANDING}/${ERROR_LOG}
-dpkg -i mariadb-client-10.3_10.3.8+maria~xenial_amd64.deb 2>${LANDING}/${ERROR_LOG}
-dpkg -i galera-3_25.3.23-xenial_amd64.deb 2>${LANDING}/${ERROR_LOG}
-dpkg -i mariadb-server-core-10.3_10.3.8+maria~xenial_amd64.deb 2>${LANDING}/${ERROR_LOG}
-dpkg -i mariadb-server-10.3_10.3.8+maria~xenial_amd64.deb 2>${LANDING}/${ERROR_LOG}
-dpkg -i mariadb-plugin-spider_10.3.8+maria~xenial_amd64.deb 2>${LANDING}/${ERROR_LOG}
+dpkg -i mysql-common_10.3.8+maria~xenial_all.deb 2>${LANDING}${ERROR_LOG}
+dpkg -i mariadb-common_10.3.8+maria~xenial_all.deb 2>${LANDING}${ERROR_LOG}
+dpkg -i mariadb-client-core-10.3_10.3.8+maria~xenial_amd64.deb 2>${LANDING}${ERROR_LOG}
+dpkg -i mariadb-client-10.3_10.3.8+maria~xenial_amd64.deb 2>${LANDING}${ERROR_LOG}
+dpkg -i galera-3_25.3.23-xenial_amd64.deb 2>${LANDING}${ERROR_LOG}
+dpkg -i mariadb-server-core-10.3_10.3.8+maria~xenial_amd64.deb 2>${LANDING}${ERROR_LOG}
+dpkg -i mariadb-server-10.3_10.3.8+maria~xenial_amd64.deb 2>${LANDING}${ERROR_LOG}
+dpkg -i mariadb-plugin-spider_10.3.8+maria~xenial_amd64.deb 2>${LANDING}${ERROR_LOG}
