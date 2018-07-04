@@ -3,6 +3,8 @@
 #Variables
 HASH="4b677d698c65370afa33757b6954ade60347aaca310ea92a63ed717d7cb0c2ff"
 GO_TAR_PACKAGE="go1.10.2.linux-amd64.tar.gz"
+GVERSION="go version go1.10.2 linux"
+UPROFILE="${USER}/.profile"
 
 #Ensure this is not being run as root
 if [ "$EUID" -ne 0 ]; then
@@ -13,7 +15,7 @@ else
 fi
 
 #install curl
-apt install curl -y
+sudo apt install curl -y
 
 #download golang package
 curl -O https://dl.google.com/go/go1.10.2.linux-amd64.tar.gz
@@ -39,4 +41,4 @@ sudo mv go /usr/local
 
 #Create profile & add to env
 echo -e "export GOPATH=$HOME/work\nexport PATH=$PATH:/usr/local/go/bin:$GOPATH/bin" >> ~/.profile
-source ~/.profile
+echo -e "${GVERSION} installed\nPlease source the ${UPROFILE} file to verify installation"
